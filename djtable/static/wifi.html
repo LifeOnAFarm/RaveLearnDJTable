@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DJTable · Wi-Fi</title><link rel="stylesheet" href="/style.css"><script src="/wifi.js" defer></script></head>
+<body><main>
+<header class="top"><a class="brand" href="/"><span class="logo" aria-hidden="true">♫</span>DJTable</a><nav><a href="/">Home</a><a href="/admin">Admin</a><a href="/wifi" aria-current="page">Wi-Fi</a></nav></header>
+<div class="title"><h1>Wi-Fi</h1></div>
+
+<section class="card"><div class="card-head"><h2>Network</h2><span id="network-status" class="badge" role="status">Checking…</span></div>
+<form id="wifi-form"><label for="ssid">Wi-Fi name</label><input id="ssid" name="ssid" required maxlength="32" autocomplete="off">
+<label for="password">Wi-Fi password</label><input id="password" name="password" type="password" required minlength="8" maxlength="63" autocomplete="off">
+<button id="connect" class="primary" type="submit">Connect</button></form>
+<p id="result" class="status" role="status" hidden></p></section>
+</main></body></html>

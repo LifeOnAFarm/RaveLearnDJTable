@@ -1,0 +1,21 @@
+[Unit]
+Description=DJTable fallback hotspot and Wi-Fi setup
+After=NetworkManager.service
+Requires=NetworkManager.service
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/local/lib/djtable-network.py
+RuntimeDirectory=djtable-network
+RuntimeDirectoryMode=0755
+Restart=on-failure
+RestartSec=5
+Nice=10
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/etc/NetworkManager/system-connections /run/djtable-network
+PrivateTmp=true
+RestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

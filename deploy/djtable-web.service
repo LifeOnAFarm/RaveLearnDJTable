@@ -1,0 +1,17 @@
+[Unit]
+Description=DJTable local sample manager
+After=network.target
+
+[Service]
+Type=simple
+User=djtable
+WorkingDirectory=/opt/PiDJTable
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/PiDJTable/.venv/bin/python -m djtable.web --config /opt/PiDJTable/config.json
+Restart=on-failure
+RestartSec=3
+Nice=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

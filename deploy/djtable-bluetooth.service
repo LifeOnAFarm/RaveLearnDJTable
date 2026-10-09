@@ -1,0 +1,12 @@
+[Unit]
+Description=DJTable Bluetooth speaker helper (started on demand)
+Requires=djtable-bluetooth.socket
+After=djtable-bluetooth.socket
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/lib/djtable-bluetooth.py
+Nice=10
+NoNewPrivileges=true
+ProtectHome=true
+PrivateTmp=true

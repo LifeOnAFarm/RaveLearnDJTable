@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DJTable · Admin</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body><main>
+<header class="top"><a class="brand" href="/"><span class="logo" aria-hidden="true">♫</span>DJTable</a><nav><a href="/">Home</a><a href="/admin" aria-current="page">Admin</a><a href="/wifi">Wi-Fi</a></nav></header>
+<div class="title"><h1>DJTable Admin</h1></div>
+<p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+
+<section class="card slider-debug" id="hardware" aria-labelledby="hardware-title"><div class="card-head"><h2 id="hardware-title">Hardware test</h2><span id="live" class="badge off">Connecting…</span></div>
+<div id="sliders"></div>
+<div class="hw-row"><span>Buttons</span><div id="buttons" class="hw-value">–</div></div>
+<div class="hw-row"><span>Platter</span><div id="platter" class="hw-value">–</div></div>
+<div class="hw-row"><span>Microphone</span><div id="recorder" class="hw-value">–</div></div>
+<p class="muted">Tap a setting to override a slider; moving the physical slider takes control back.</p></section>
+
+<section class="card"><div class="card-head"><h2>Songs</h2><select id="song-theme" aria-label="Theme playlist"></select></div>
+<ol id="songs" class="songs"></ol><p id="empty" class="muted" hidden>No songs yet. Add one on the Home page.</p>
+<div class="meter"><span>Memory</span><meter id="memory-meter" min="0" max="96" value="0"></meter><strong id="memory">–</strong></div></section>
+</main></body></html>

@@ -1,0 +1,28 @@
+[Unit]
+Description=Pi DJTable
+After=sound.target
+
+[Service]
+Type=simple
+User=djtable
+SupplementaryGroups=audio gpio i2c spi
+RuntimeDirectory=djtable
+RuntimeDirectoryMode=0750
+WorkingDirectory=/run/djtable
+Environment=PYTHONPATH=/opt/PiDJTable
+Environment=GPIOZERO_PIN_FACTORY=lgpio
+Environment=PYTHONUNBUFFERED=1
+# One BLAS thread: extra NumPy worker threads compete with the audio callback.
+Environment=OPENBLAS_NUM_THREADS=1
+ExecStart=/opt/PiDJTable/.venv/bin/python -m djtable --config /opt/PiDJTable/config.json
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+NoNewPrivileges=true
+Nice=-5
+# Boot jobs (network setup, log rotation) compete for CPU and SD card; DJTable goes first.
+CPUWeight=1000
+IOWeight=1000
+
+[Install]
+WantedBy=multi-user.target

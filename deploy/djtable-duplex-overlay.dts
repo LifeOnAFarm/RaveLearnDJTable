@@ -1,0 +1,43 @@
+// Based on Raspberry Pi's googlevoicehat-soundcard-overlay.dts (rpi-6.18.y).
+// Uses the installed voiceHAT driver: 48 kHz, stereo, 32-bit I2S slots.
+// DJTable uses BCM4 for MAX98357A SD_MODE; BCM16 must remain a keyboard input.
+/dts-v1/;
+/plugin/;
+/ {
+    compatible = "brcm,bcm2835";
+    fragment@0 {
+        target = <&i2s_clk_producer>;
+        __overlay__ { status = "okay"; };
+    };
+    fragment@1 {
+        target = <&gpio>;
+        __overlay__ {
+            djtable_amp: djtable_amp {
+                brcm,pins = <4>;
+                brcm,function = <1>;
+                brcm,pull = <0>;
+            };
+        };
+    };
+    fragment@2 {
+        target-path = "/";
+        __overlay__ {
+            voicehat-codec {
+                #sound-dai-cells = <0>;
+                compatible = "google,voicehat";
+                pinctrl-names = "default";
+                pinctrl-0 = <&djtable_amp>;
+                sdmode-gpios = <&gpio 4 0>;
+                status = "okay";
+            };
+        };
+    };
+    fragment@3 {
+        target = <&sound>;
+        __overlay__ {
+            compatible = "googlevoicehat,googlevoicehat-soundcard";
+            i2s-controller = <&i2s_clk_producer>;
+            status = "okay";
+        };
+    };
+};

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DJTable · Home</title><link rel="stylesheet" href="/style.css"><script src="/upload.js" defer></script><script src="/modes.js" defer></script><script src="/activities.js" defer></script></head>
+<body><main>
+<header class="top"><a class="brand" href="/"><span class="logo" aria-hidden="true">♫</span>DJTable</a><nav><a href="/" aria-current="page">Home</a><a href="/admin">Admin</a><a href="/wifi">Wi-Fi</a></nav></header>
+<div class="title"><h1>Home</h1><div class="keys" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+
+<section class="card"><label for="activity-select">Keyboard mode</label><select id="activity-select" disabled></select><p id="activity-status" class="status" role="status" aria-live="polite" hidden></p></section>
+
+<section class="card"><label for="mode-select">Music theme</label><select id="mode-select" disabled></select><p id="mode-status" class="status" role="status" aria-live="polite" hidden></p></section>
+
+<section class="card" id="maker-panel" hidden><h2>Music Maker</h2><p id="maker-status" class="status" role="status"></p>
+<div class="actions"><button id="maker-toggle" type="button">Play / pause</button><button id="maker-undo" type="button">Undo</button><button id="maker-clear" type="button">Clear all</button></div>
+<label class="check"><input id="maker-quantize" type="checkbox" checked> Align notes to the beat</label></section>
+
+<section class="card" id="song-card"><h2>Add a song</h2>
+<form id="song-upload"><label for="song-file">Song clip (WAV, up to 60 seconds, 12 MB)</label><input id="song-file" type="file" accept=".wav,audio/wav" required>
+<label for="song-title">Song name</label><input id="song-title" maxlength="100" placeholder="Name of your song" required>
+<button class="primary" id="song-submit" type="submit">Add to random songs</button><progress id="song-progress" max="100" value="0" hidden aria-label="Upload progress"></progress></form>
+<p id="song-message" class="status" role="status" aria-live="polite" hidden></p><p id="song-count" class="muted"></p></section>
+</main></body></html>
