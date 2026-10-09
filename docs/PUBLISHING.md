@@ -86,5 +86,5 @@ GitHub asks you to sign in the first time, in your browser or with GitHub Deskto
 - [x] Fresh card, copied table (INSTALL.md 3B): Raspberry Pi OS trixie, 9 October 2026.
   All 144 tests passed on the Pi, three clean reboots.
 - [ ] A new table (INSTALL.md 3A, starter sounds) on a fresh Raspberry Pi OS Lite card.
-- [ ] The test workflow has run green on GitHub.
+- [x] The test workflow has run green on GitHub (Python 3.11 and 3.13, 9 October 2026).
 - [x] Repository address in `docs/INSTALL.md` (https://github.com/LifeOnAFarm/RaveLearnDJTable).
