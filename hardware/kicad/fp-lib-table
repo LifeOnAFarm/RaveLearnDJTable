@@ -1,0 +1,1 @@
+(fp_lib_table (lib (name "DJTable") (type "KiCad") (uri "${KIPRJMOD}/DJTable.pretty") (options "") (descr "Vendored KiCad footprints; module/switch geometry pending")))

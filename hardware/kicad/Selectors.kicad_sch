@@ -1,0 +1,1705 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "986cb673-c09d-5985-8e47-2b74315d1185")
+	(paper "A3")
+	(title_block
+		(title "Tone buttons, level and volume")
+		(date "2026-09-26")
+		(rev "A0.4")
+		(company "DJTable - Raspberry Pi Zero 2 W")
+		(comment 1 "SOURCE-BASED FOOTPRINTS - PHYSICAL FIT CHECK REQUIRED")
+	)
+	(lib_symbols
+		(symbol "DJTable:PS12F03_Contact"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 10.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PS12F03_Contact"
+				(at 0 -10.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PS12F03_Contact_0_1"
+				(rectangle
+					(start -15.24 7.62)
+					(end 15.24 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "PS12F03_Contact_1_1"
+				(pin passive line
+					(at 20.32 -3.81 180)
+					(length 5.08)
+					(name "NC"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 0 0)
+					(length 5.08)
+					(name "COM"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 3.81 180)
+					(length 5.08)
+					(name "NO"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DJTable:Pullup_8x10k"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 22.05 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Pullup_8x10k"
+				(at 0 -22.05 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Pullup_8x10k_0_1"
+				(rectangle
+					(start -12.7 19.05)
+					(end 12.7 -19.05)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Pullup_8x10k_1_1"
+				(pin passive line
+					(at 17.78 15.24 180)
+					(length 5.08)
+					(name "COM_3V3"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 11.43 180)
+					(length 5.08)
+					(name "10k_1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 7.62 180)
+					(length 5.08)
+					(name "10k_2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 3.81 180)
+					(length 5.08)
+					(name "10k_3"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 0 180)
+					(length 5.08)
+					(name "10k_4"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 -3.81 180)
+					(length 5.08)
+					(name "10k_5"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 -7.62 180)
+					(length 5.08)
+					(name "10k_6"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 -11.43 180)
+					(length 5.08)
+					(name "10k_7"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 -15.24 180)
+					(length 5.08)
+					(name "10k_8"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DJTable:SS23D03_Contact"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 20.145 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SS23D03_Contact"
+				(at 0 -20.145 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SS23D03_Contact_0_1"
+				(rectangle
+					(start -15.24 17.145)
+					(end 15.24 -17.145)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "SS23D03_Contact_1_1"
+				(pin passive line
+					(at 20.32 9.525 180)
+					(length 5.08)
+					(name "POS_1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 5.715 180)
+					(length 5.08)
+					(name "POS_2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 13.335 180)
+					(length 5.08)
+					(name "COM_A"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 1.905 180)
+					(length 5.08)
+					(name "POS_3"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -5.715 180)
+					(length 5.08)
+					(name "THROW_B1"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -9.525 180)
+					(length 5.08)
+					(name "THROW_B2"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -1.905 180)
+					(length 5.08)
+					(name "COM_B"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -13.335 180)
+					(length 5.08)
+					(name "THROW_B3"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1 1)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "Spring-return: press selects tone, release retains it.\nPins: 1=a NC; 2=b COM; 3=c NO.\nSuntan drawing footprint; verify physical fit."
+		(exclude_from_sim no)
+		(at 20 185 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+			)
+			(justify left top)
+		)
+		(uuid "03ec92a1-4493-57f1-9b0f-22931f73c9f3")
+	)
+	(text "MOMENTARY TONE SELECTION"
+		(exclude_from_sim no)
+		(at 20 18 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+			(justify left top)
+		)
+		(uuid "3cf8e71f-6bf4-5a83-925e-711cf8d1c044")
+	)
+	(text "3-POSITION SLIDERS"
+		(exclude_from_sim no)
+		(at 160 18 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+			(justify left top)
+		)
+		(uuid "50ca2080-eb18-5989-aa74-d1f2b8eee610")
+	)
+	(text "INTERNAL GPIO PULL-UPS"
+		(exclude_from_sim no)
+		(at 300 18 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+			(justify left top)
+		)
+		(uuid "74bc5ca3-570e-591e-bf30-e73a0bd71afe")
+	)
+	(text "One stable contact LOW selects each position.\nIgnore invalid/multiple contacts while sliding.\nSecond pole unused. Source drawing: shorting type.\nVerify contact truth table on purchased switches."
+		(exclude_from_sim no)
+		(at 155 218 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+			)
+			(justify left top)
+		)
+		(uuid "bab4e92e-b38b-5663-8ae1-344e55b99594")
+	)
+	(no_connect
+		(at 85.09 101.6)
+		(uuid "03f21dc0-e6a4-5501-b995-9b53066a8bed")
+	)
+	
+	(no_connect
+		(at 217.17 66.04)
+		(uuid "1b61592d-772b-54e2-af4a-879514abfcf1")
+	)
+	
+	(no_connect
+		(at 217.17 173.99)
+		(uuid "22e08055-313f-5769-acf5-8af2459210dc")
+	)
+	(no_connect
+		(at 217.17 166.37)
+		(uuid "388325e1-f37a-5eb4-8ee8-1aa051c99a9c")
+	)
+	(no_connect
+		(at 85.09 55.88)
+		(uuid "6b4bfaa3-49ad-576e-ae8d-147071410425")
+	)
+	(no_connect
+		(at 217.17 73.66)
+		(uuid "6bb78d05-4e8f-52de-a282-cc8acff9bff2")
+	)
+	
+	(no_connect
+		(at 217.17 69.85)
+		(uuid "808c70ca-85ca-5d94-8b85-cec81d33b230")
+	)
+	(no_connect
+		(at 85.09 147.32)
+		(uuid "8b462860-f3d2-56ca-b803-2eabaa42ed62")
+	)
+	(no_connect
+		(at 217.17 162.56)
+		(uuid "ab338441-4abe-53b0-add2-7960b7331f4f")
+	)
+	(no_connect
+		(at 217.17 170.18)
+		(uuid "d0284ca1-59f3-53d7-bd6a-ba5c8a8737f3")
+	)
+	
+	(no_connect
+		(at 217.17 77.47)
+		(uuid "ea0b5004-51cc-51d0-86f9-cb7fd408304c")
+	)
+	(wire
+		(pts
+			(xy 217.17 50.8) (xy 227.33 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "151cd5b5-1407-53e7-8552-e4b3e5ad138e")
+	)
+	
+	
+	
+	
+	
+	(wire
+		(pts
+			(xy 44.45 143.51) (xy 34.29 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "305c7e2a-c9cb-5d28-848f-7ab932f397d8")
+	)
+	(wire
+		(pts
+			(xy 85.09 139.7) (xy 95.25 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39b1a100-f0c8-586b-9e39-77831b2895d1")
+	)
+	(wire
+		(pts
+			(xy 217.17 54.61) (xy 227.33 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ec38db7-d207-47ef-aa69-fdf06ad70a97")
+	)
+	
+	
+	(wire
+		(pts
+			(xy 217.17 147.32) (xy 227.33 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "483b4f62-8b39-5667-83cb-6ff3dd13b3b6")
+	)
+	(wire
+		(pts
+			(xy 85.09 48.26) (xy 95.25 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a4a4b10-507a-52f1-af4f-d19d5aeaa5a4")
+	)
+	
+	(wire
+		(pts
+			(xy 44.45 52.07) (xy 34.29 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d6150a7-d449-54eb-ac0f-74562e5474ef")
+	)
+	
+	
+	(wire
+		(pts
+			(xy 44.45 97.79) (xy 34.29 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f808504-ddf2-556d-8506-0a00504e26ef")
+	)
+	
+	
+	(wire
+		(pts
+			(xy 217.17 58.42) (xy 227.33 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e8af71e-5e6e-5355-abb9-aefc7ca7cd85")
+	)
+	(wire
+		(pts
+			(xy 217.17 154.94) (xy 227.33 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a44ad30e-c42d-40b2-b068-99fe32af7bc0")
+	)
+	
+	
+	
+	
+	(wire
+		(pts
+			(xy 85.09 93.98) (xy 95.25 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc214f62-21c4-5e02-b487-4229288514c1")
+	)
+	
+	
+	
+	
+	
+	(wire
+		(pts
+			(xy 217.17 158.75) (xy 227.33 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d76736a3-d1be-4f4a-8ed7-ce1e13e85516")
+	)
+	
+	(wire
+		(pts
+			(xy 217.17 151.13) (xy 227.33 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1afe470-2c06-43ae-acef-189d4916b23c")
+	)
+	
+	(wire
+		(pts
+			(xy 217.17 62.23) (xy 227.33 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fae88211-805f-4815-915e-10b145ac1308")
+	)
+	
+	(global_label "GND"
+		(shape input)
+		(at 34.29 52.07 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "0ebb7f1f-f6dc-5d67-82a9-fc761416f15f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.29 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	
+	
+	(global_label "GND"
+		(shape input)
+		(at 227.33 147.32 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "2e186379-62e2-5908-a02c-33de4a0fe52a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	
+	
+	(global_label "VOLUME_LOW"
+		(shape input)
+		(at 227.33 158.75 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "3a46d2c1-ec37-5807-87a3-ff6e97f63069")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	
+	(global_label "GND"
+		(shape input)
+		(at 34.29 97.79 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "4b4bbced-e585-5fc5-86e5-d7f0d6f002ce")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.29 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "VOLUME_HIGH"
+		(shape input)
+		(at 227.33 151.13 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "57f8136e-1add-5e01-a24b-a70ff7fcaa52")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "LEVEL_NOTES"
+		(shape input)
+		(at 227.33 54.61 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "58455780-91da-578a-a637-fadf6a94bf80")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	
+	(global_label "GND"
+		(shape input)
+		(at 34.29 143.51 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "5c3ffc0f-0f66-5397-8152-b2c600eb04ca")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.29 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "TONE_HIGH"
+		(shape input)
+		(at 95.25 93.98 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "66e01e70-542e-5528-9e52-9c0ba1dc75ee")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 95.25 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	
+	
+	
+	
+	
+	
+	
+	(global_label "VOLUME_MED"
+		(shape input)
+		(at 227.33 154.94 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "97f1a6eb-282a-5daa-b0f0-dbd794ae8e7b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	
+	(global_label "GND"
+		(shape input)
+		(at 227.33 50.8 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "9a8b3ac0-612a-516b-a206-c7fceaf43edf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	
+	(global_label "LEVEL_GA"
+		(shape input)
+		(at 227.33 58.42 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "b20b5cdf-fb59-5ba8-827d-269c418e8958")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	
+	
+	
+	
+	
+	
+	
+	(global_label "TONE_SYNTH"
+		(shape input)
+		(at 95.25 139.7 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "f04fb0da-e634-5eda-8e36-6f4c21174fd8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 95.25 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "TONE_PIANO"
+		(shape input)
+		(at 95.25 48.26 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "f28def2e-07bb-5c27-a09e-f36adec19270")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 95.25 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "LEVEL_EN"
+		(shape input)
+		(at 227.33 62.23 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "f7c365c6-9ac8-5a9e-a786-ba64c7e242c1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DJTable:SS23D03_Contact")
+		(at 196.85 160.655 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3066cf53-cac9-5ed1-abaa-61938ff50822")
+		(property "Reference" "SW5"
+			(at 196.85 138.43 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SS-23D03-G4 VOLUME"
+			(at 196.85 140.97 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "DJTable:SS23D03_G4_2P3T_P2_P4"
+			(at 196.85 160.655 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 196.85 160.655 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 196.85 160.655 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly_Note" "G-Switch drawing, top-view mapping. Common 3/7; positions 1/2/4 and 5/6/8. Verify actual switch contact continuity and mounting tabs."
+			(at 196.85 160.655 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "7b56e661-72ee-58d1-9495-7cdf2f2fe2b5")
+		)
+		(pin "1"
+			(uuid "900df10d-5afe-57ad-b130-1ad4d736a742")
+		)
+		(pin "2"
+			(uuid "757d1b6b-1685-5760-8d5c-aeef080913ce")
+		)
+		(pin "4"
+			(uuid "0c2fecaf-6d6e-5859-8d88-1e3a042a672b")
+		)
+		(pin "7"
+			(uuid "137b5e52-3aa6-597e-b731-c83981541ed3")
+		)
+		(pin "5"
+			(uuid "a6d9681e-7f63-5a58-b15e-3bb01516d385")
+		)
+		(pin "6"
+			(uuid "f8df2e8c-5930-59d3-8d6e-77cafa42926e")
+		)
+		(pin "8"
+			(uuid "8e9a7a42-8a2f-58e5-88ad-82868f573422")
+		)
+		(instances
+			(project "DJTable"
+				(path "/586253bf-f9f0-50aa-96e2-4c897b7e8698/be02d977-d1af-5196-aa41-fc8910546038"
+					(reference "SW5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	
+	(symbol
+		(lib_id "DJTable:PS12F03_Contact")
+		(at 64.77 143.51 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9f721983-8bb8-5ee9-bd00-106d1f0170eb")
+		(property "Reference" "SW3"
+			(at 64.77 130.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PS-12F03-G4 SYNTH"
+			(at 64.77 133.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "DJTable:PS12F03_Momentary_3Pin_P3.2"
+			(at 64.77 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 64.77 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 64.77 143.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly_Note" "Suntan supplied PDF: 1=a NC, 2=b COM, 3=c NO. Verify lead thickness/drill and fit before fabrication."
+			(at 64.77 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "d3327ea9-8513-56b0-ab33-22755784bc7f")
+		)
+		(pin "3"
+			(uuid "2f2c0b9a-91af-5779-8db8-d838330e75e3")
+		)
+		(pin "1"
+			(uuid "8a83bb2b-71bb-56d2-ab67-801762faf9a7")
+		)
+		(instances
+			(project "DJTable"
+				(path "/586253bf-f9f0-50aa-96e2-4c897b7e8698/be02d977-d1af-5196-aa41-fc8910546038"
+					(reference "SW3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DJTable:PS12F03_Contact")
+		(at 64.77 97.79 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ac91de29-2b77-5513-9696-5bfef2973ce4")
+		(property "Reference" "SW2"
+			(at 64.77 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PS-12F03-G4 HIGH / MEOW"
+			(at 64.77 87.63 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "DJTable:PS12F03_Momentary_3Pin_P3.2"
+			(at 64.77 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 64.77 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 64.77 97.79 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly_Note" "Suntan supplied PDF: 1=a NC, 2=b COM, 3=c NO. Verify lead thickness/drill and fit before fabrication."
+			(at 64.77 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "9ed17650-b8f2-50a3-a734-07c4b5c85fca")
+		)
+		(pin "3"
+			(uuid "b636458c-cf29-51d7-86e5-ad3f969683ac")
+		)
+		(pin "1"
+			(uuid "0a7f9123-b066-5156-a186-ef48cc508394")
+		)
+		(instances
+			(project "DJTable"
+				(path "/586253bf-f9f0-50aa-96e2-4c897b7e8698/be02d977-d1af-5196-aa41-fc8910546038"
+					(reference "SW2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	
+	
+	(symbol
+		(lib_id "DJTable:SS23D03_Contact")
+		(at 196.85 64.135 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e3528c58-91f6-5273-9245-8d951f99225a")
+		(property "Reference" "SW4"
+			(at 196.85 41.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SS-23D03-G4 LEVEL"
+			(at 196.85 44.45 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "DJTable:SS23D03_G4_2P3T_P2_P4"
+			(at 196.85 64.135 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 196.85 64.135 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 196.85 64.135 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly_Note" "G-Switch drawing, top-view mapping. Common 3/7; positions 1/2/4 and 5/6/8. Verify actual switch contact continuity and mounting tabs."
+			(at 196.85 64.135 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "01067092-b5c5-5091-babc-7ead2ff8cfe0")
+		)
+		(pin "1"
+			(uuid "3ce7df40-6e3d-5653-9337-e42d8cea9361")
+		)
+		(pin "2"
+			(uuid "3c3a5c0c-2aa7-55bd-92b5-d92f9537816a")
+		)
+		(pin "4"
+			(uuid "ec36a791-2073-5eab-838f-5901c3bd6a0d")
+		)
+		(pin "7"
+			(uuid "445f7a02-eddd-5f2d-af53-32218dacdcf1")
+		)
+		(pin "5"
+			(uuid "eb296a6c-8937-50ac-b911-b02c6723ad32")
+		)
+		(pin "6"
+			(uuid "cd5af65f-d70d-5366-83c9-e7fca3e56ec1")
+		)
+		(pin "8"
+			(uuid "4a5ddb98-5d39-5b55-8e95-390f22bcb920")
+		)
+		(instances
+			(project "DJTable"
+				(path "/586253bf-f9f0-50aa-96e2-4c897b7e8698/be02d977-d1af-5196-aa41-fc8910546038"
+					(reference "SW4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DJTable:PS12F03_Contact")
+		(at 64.77 52.07 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "fabe5ed4-6825-52f4-939e-5b2b4371652f")
+		(property "Reference" "SW1"
+			(at 64.77 39.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PS-12F03-G4 PIANO"
+			(at 64.77 41.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Footprint" "DJTable:PS12F03_Momentary_3Pin_P3.2"
+			(at 64.77 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 64.77 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 64.77 52.07 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Assembly_Note" "Suntan supplied PDF: 1=a NC, 2=b COM, 3=c NO. Verify lead thickness/drill and fit before fabrication."
+			(at 64.77 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "2a1d47ad-8ec0-55e9-9906-5b091385f49e")
+		)
+		(pin "3"
+			(uuid "40acbabb-2b89-5d4b-bc5e-6a2c0e5a01b5")
+		)
+		(pin "1"
+			(uuid "dd18b273-612b-57e0-84e1-1c5abb5512ed")
+		)
+		(instances
+			(project "DJTable"
+				(path "/586253bf-f9f0-50aa-96e2-4c897b7e8698/be02d977-d1af-5196-aa41-fc8910546038"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+
+(text "Use internal GPIO pull-ups; RN1-RN3 removed.\nNo carrier pull-ups are required for these short switch runs." (at 300 38 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "8665ea22-a965-51e9-a996-a0d81ed26a95"))
+)

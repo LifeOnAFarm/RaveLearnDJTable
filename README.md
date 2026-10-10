@@ -4,6 +4,7 @@ A Raspberry Pi rebuild of a Fisher-Price kids' DJ table toy: an eight-key musica
 table running on a **Raspberry Pi Zero 2 W**, written in Python 3.11+.
 
 Full run down of the hardware setup can be found [here](https://nastypieceof.work/raveandrepeat).
+The PCB files, parts list and wiring notes are in [hardware/](hardware/README.md).
 
 ## Software guides
 
@@ -73,6 +74,7 @@ deploy/         install scripts, services, sound overlay
 tools/          starter sound generator, song volume matcher
 sounds/         included words, announcements, prompt and scratches
 docs/           install and sound guides
+hardware/       PCB Gerbers, schematic, KiCad project and parts list
 config.example.json   the table's settings (copied to config.json on install)
 ```
 

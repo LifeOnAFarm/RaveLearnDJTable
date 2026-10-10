@@ -1,0 +1,90 @@
+# Hardware
+
+The carrier PCB that turns the toy into a Rave & Repeat table. The full build, with
+photos, is on the [project website](https://nastypieceof.work/raveandrepeat).
+
+| File | What it is |
+| --- | --- |
+| `DJTable-gerbers.zip` | Ready to upload to a PCB maker (JLCPCB, PCBWay and others): copper, mask, silkscreen, outline and drill files. 2 layers. |
+| `DJTable-schematic.pdf` | The schematic, for reading without KiCad. |
+| `kicad/` | The KiCad 10 project (schematic, PCB and its own footprint library), if you want to change the board. Open `DJTable.kicad_pro`. |
+
+## Read before you build
+
+This is the board revision that was built and works, with these fixes made by hand.
+**The PCB files don't include them yet.**
+
+1. **Wire the amp's SD pin to Raspberry Pi header pin 7** (GPIO4). That's pin 7 of the
+   Pi's 40-pin header, not of the amp module. The software uses it to mute the amp while
+   it loads a new theme. Without it, theme changes crackle.
+2. **Wire the amp's GAIN pin to ground.** This sets the amp to 12 dB, louder than the
+   9 dB it gives with GAIN left unconnected.
+3. **The Raspberry Pi mounts upside-down**, with its chips facing the carrier board.
+   Check the 40-pin socket height leaves room for the parts underneath.
+4. **The toy's original switches don't fit this board**, although that was the plan.
+   Use these instead. Both fit the board and work with the toy:
+   - **SS-23D03-G4** three-position slide switches for Level and Volume (SW4, SW5);
+   - **PS-12F03-G4** push switches for the three Tone buttons (SW1–SW3).
+     Their flat legs are a tight fit in this board's holes; trim them slightly if needed.
+
+Before the first power-up, check with a meter:
+
+- 5 V and ground on the Pi socket aren't shorted, and match the Pi;
+- **Pi pins 38 and 40 aren't bridged.** They are the microphone and speaker data, side by
+  side. A bridge feeds the microphone into the speaker: constant hum or howl.
+
+## Parts
+
+| Qty | Ref | Part | Notes |
+| ---: | --- | --- | --- |
+| 1 | U1 | Raspberry Pi Zero 2 W | With a 2×20 male header |
+| 1 | U1 | 2×20 female socket, 2.54 mm | Height to suit the upside-down Pi |
+| 1 | U2 | INMP441 microphone module, round | Two rows of 3 pins |
+| 1 | U3 | MAX98357A amplifier module (Adafruit-style) | Plus the SD and GAIN wires above |
+| 3 | SW1–SW3 | PS-12F03-G4 push switch | Tone |
+| 2 | SW4–SW5 | SS-23D03-G4 slide switch, 3-position | Level and Volume |
+| 2 | SW6–SW7 | 6×6 mm tactile switch, through-hole | Record and Mode |
+| 1 | R1 | 330 Ω, 1206 | Song button LED |
+| 1 | R2 | 1 kΩ, 1206 | **Fit it**: connects the Mode button |
+| 2 | R6–R7 | 33 Ω, 1206 | I2S clock lines |
+| 2 | C2, C4 | 100 nF ceramic, 1206, 16 V+ | C3 pads can stay empty |
+| 1 | C1 | 220 µF 10 V electrolytic | 8 mm, 3.5 mm leads |
+| 1 | C5 | 47 µF 10 V electrolytic | 5 mm, 2 mm leads, by the amp |
+| 1 | F1 | Resettable fuse, 2 A hold, 6 V+, 1812 | |
+| — | J1–J6 | 2.54 mm pin headers, or solder the wires in | See connectors below |
+
+Off the board:
+- the toy's keyboard, Song button with its LED, and speaker;
+- an AS5600 magnetic angle module with a diametric magnet, for the platter;
+- a regulated 5 V supply, 2.5 A or more.
+
+Power the table only through J3, never through the Pi's USB port at the same time.
+
+## Connectors
+
+| Connector | Pins |
+| --- | --- |
+| J1 Keyboard | 1 GND, 2 pink, 3 red, 4 orange, 5 green, 6 yellow, 7 blue, 8 purple, 9 black |
+| J2 Song button | 1 switch GND, 2 switch, 3 LED −, 4 LED + |
+| J3 Power in | 1 +5 V, 2 GND |
+| J4, J5 | Spare 5 V outputs (1 +5 V, 2 GND) |
+| J6 AS5600 | 1 VCC (3.3 V), 2 OUT (unused), 3 GND, 4 DIR (GND), 5 SCL, 6 SDA, 7 GPO (unused) |
+
+## Raspberry Pi pins
+
+All buttons and switches connect a pin to ground; the software turns on the pull-ups.
+
+| Control | GPIO (BCM) | Header pin |
+| --- | --- | --- |
+| Keys pink, red, orange, green | 5, 6, 12, 13 | 29, 31, 32, 33 |
+| Keys yellow, blue, purple, black | 16, 17, 22, 27 | 36, 11, 15, 13 |
+| Tone 1 / 2 / 3 | 7 / 24 / 23 | 26 / 18 / 16 |
+| Level 1 / 2 / 3 | 8 / 26 / 25 | 24 / 37 / 22 |
+| Volume low / medium / high | 15 / 14 / 9 | 10 / 8 / 21 |
+| Song | 10 | 19 |
+| Record | 11 | 23 |
+| Mode | 0 | 27 |
+| Amp mute (amp SD) | 4 | 7 |
+| I2S bit clock / frame clock | 18 / 19 | 12 / 35 |
+| Mic data / speaker data | 20 / 21 | 38 / 40 |
+| AS5600 SDA / SCL | 2 / 3 | 3 / 5 |

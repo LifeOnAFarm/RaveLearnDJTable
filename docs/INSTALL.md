@@ -2,8 +2,9 @@
 
 This sets up the table exactly as it runs on the original: the PCB's MAX98357A speaker
 amp and INMP441 microphone, the AS5600 platter, the mode button, Bluetooth mode and the
-web pages. Build the hardware first; see the
-[hardware guide](https://nastypieceof.work/raveandrepeat).
+web pages. Build the hardware first: see the
+[hardware guide](https://nastypieceof.work/raveandrepeat) and the
+[PCB notes](../hardware/README.md), especially the hand-wired fixes.
 
 You need a Raspberry Pi Zero 2 W, a fast microSD card (16 GB or more, marked A1 or A2)
 and a computer on the same Wi-Fi network.
