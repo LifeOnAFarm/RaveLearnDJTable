@@ -18,7 +18,8 @@ The table has three keyboard modes, chosen on its web page or by holding the mod
 for 5 seconds.
 
 **Learning.** The keys say their colour and shape in English (Level 1) or Irish (Level 2),
-or play notes (Level 3). Song plays a random song. Record asks for a message, records
+or play notes (Level 3). The **NumPad** (the single button made to look like a number pad)
+plays a random song. Record asks for a message, records
 3 seconds of your voice and plays it back as a pitched-up remix over a beat. There are four
 music themes, each with its own instruments, songs and beats: **Teenage Disco, House, Punk
 and Baby Raver**. A tap on the mode button changes theme.
@@ -35,7 +36,7 @@ own voice as an instrument (Level 3).
 | Tone | Three sounds per theme | Three instruments, kits or voice characters | Three instruments |
 | Volume | Low / medium / high | Low / medium / high | Low / medium / high |
 | Record | Voice remix | Hold: record a layer after the count-in. Tap at Level 3: sample a sound to play on the keys | Off |
-| Song | Random song, or stop | Tap: play/pause. Hold 2 s: clear this layer. Hold 5 s: clear all | Tap: play/pause. Hold: next track |
+| NumPad | Random song, or stop | Tap: play/pause. Hold 2 s: clear this layer. Hold 5 s: clear all | Tap: play/pause. Hold: next track |
 | Platter | Bends notes and song speed; spun on its own, plays a scratch | Bends notes and loop speed | |
 
 Spoken announcements say when the theme, mode or Level changes.
@@ -61,7 +62,8 @@ personal recordings**.
 
 - **Included** (`sounds/`): the English and Irish colour and shape words, the spoken
   announcements, the recording prompt and the platter scratches.
-- **Generated:** the keyboard instruments for every theme (House has chords, stabs and a
+- **Made on the Pi by the installer** (about 2 minutes, not stored in the repo): the
+  keyboard instruments for every theme (House has chords, stabs and a
   deep bass in F minor), the remix beats and the Music Maker drum kits.
 
 Make the table your own with [Replacing sounds](docs/SAMPLES.md).

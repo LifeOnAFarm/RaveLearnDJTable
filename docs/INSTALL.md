@@ -40,11 +40,12 @@ sudo sh deploy/install.sh
 sudo reboot
 ```
 
-The installer takes 10–20 minutes, mostly generating the starter sounds. It:
+The installer takes about 5–10 minutes on a new card, mostly downloading packages. It:
 
 1. installs the packages it needs, without upgrading anything else;
 2. sets up Python and the table's settings (`config.json`);
-3. generates the starter sounds;
+3. copies the included words, announcements, prompt and scratches into place, then makes
+   the instruments, remix beats and Music Maker drums on the Pi (about 2 minutes);
 4. installs the table's services and starts them on every boot;
 5. sets up the speaker and microphone, turns I2C on for the platter, and turns SPI and
    the serial console off, because their pins are used by the buttons and sliders;
@@ -55,7 +56,7 @@ The installer takes 10–20 minutes, mostly generating the starter sounds. It:
 After the reboot, wait about half a minute, then open `http://<hostname>.local:8080`
 and go to **Admin**:
 
-1. Move each slider through all three positions and press every key, Song, Record and
+1. Move each slider through all three positions and press every key, the NumPad, Record and
    the mode button. Each should show in the live readout.
 2. Spin the platter. Its reading should move.
 3. Play some keys at full volume. There should be no hum or crackle.

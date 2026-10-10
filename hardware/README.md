@@ -39,7 +39,7 @@ This is the board revision that was built and works, with these fixes made by ha
 | 3 | SW1–SW3 | PS-12F03-G5 push switch | Tone |
 | 2 | SW4–SW5 | SS-23D03-G4 slide switch, 3-position | Level and Volume |
 | 2 | SW6–SW7 | 6×6 mm tactile switch, through-hole | Record and Mode |
-| 1 | R1 | 330 Ω, 1206 | Song button LED |
+| 1 | R1 | 330 Ω, 1206 | NumPad LED |
 | 1 | R2 | 0 Ω, 1206, or a wire | **Bridge it**: connects the Mode button |
 | 2 | R6–R7 | 33 Ω, 1206 | I2S clock lines |
 | 3 | C2, C3, C4 | 100 nF ceramic, 1206, 16 V+ | |
@@ -71,7 +71,7 @@ STL files in [`3d-prints/`](3d-prints/).
 | Connector | Pins |
 | --- | --- |
 | J1 Keyboard | 1 GND, 2 pink, 3 red, 4 orange, 5 green, 6 yellow, 7 blue, 8 purple, 9 black |
-| J2 Song button | 1 switch GND, 2 switch, 3 LED −, 4 LED + |
+| J2 NumPad button | 1 switch GND, 2 switch, 3 LED −, 4 LED + |
 | J3 Power in | 1 +5 V, 2 GND |
 | J4, J5 | Spare 5 V outputs (1 +5 V, 2 GND) |
 | J6 AS5600 | 1 VCC (3.3 V), 2 OUT (unused), 3 GND, 4 DIR (GND), 5 SCL, 6 SDA, 7 GPO (unused) |
@@ -87,7 +87,7 @@ All buttons and switches connect a pin to ground; the software turns on the pull
 | Tone 1 / 2 / 3 | 7 / 24 / 23 | 26 / 18 / 16 |
 | Level 1 / 2 / 3 | 8 / 26 / 25 | 24 / 37 / 22 |
 | Volume low / medium / high | 15 / 14 / 9 | 10 / 8 / 21 |
-| Song | 10 | 19 |
+| NumPad | 10 | 19 |
 | Record | 11 | 23 |
 | Mode | 0 | 27 |
 | Amp mute (amp SD) | 4 | 7 |

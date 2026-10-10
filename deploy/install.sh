@@ -18,7 +18,7 @@ echo '== 2/6 Python environment'
 test -x .venv/bin/python || python3 -m venv --system-site-packages .venv
 .venv/bin/pip install -q 'sounddevice>=0.5,<0.6'
 
-echo '== 3/6 Settings and starter sounds (a few minutes the first time)'
+echo '== 3/6 Settings and sounds (about 2 minutes the first time)'
 test -f config.json || cp config.example.json config.json
 # Included sounds (words, announcements, prompt, scratches) first; never replaces your own.
 (cd sounds && find . -type f -name '*.wav') | while read -r sound; do

@@ -47,7 +47,7 @@ fetch('/api/modes').then(r => r.json()).then(data => {
 }).catch(error => notice('Cannot reach the table: ' + error.message, true));
 
 // ---- Hardware test ----
-const BUTTON_NAMES = {song: 'Song', record: 'Record', mode: 'Mode'};
+const BUTTON_NAMES = {song: 'NumPad', record: 'Record', mode: 'Mode'};
 const buttonName = name => BUTTON_NAMES[name] || name[0].toUpperCase() + name.slice(1);
 const THEME_TONES = {house: ['House chords', 'Chord stabs', 'Deep bass'], punk: ['Clean guitar', 'Crunch guitar', 'Power chord'], baby_raver: ['Quacky duck', 'Meowing cat', 'Bouncy robot']};
 function sliderLabels(data) {

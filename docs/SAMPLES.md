@@ -7,7 +7,7 @@ a file you have changed.
 
 | Sound | Where | Used in |
 | --- | --- | --- |
-| Random songs | Upload on the **Home** page | Song button in Learning; each theme has its own list |
+| Random songs | Upload on the **Home** page | NumPad button in Learning; each theme has its own list |
 | Colour and shape words | `assets/samples/colours/<en or ga>/<colour>.wav` and `assets/samples/symbols/<en or ga>/<colour>.wav` | Learning, Levels 1 and 2 |
 | Remix beats | `assets/backing_beats/` (Teenage Disco), `assets/house_beats/`, `assets/punk_beats/`, `assets/baby_raver_beats/` | Learning voice remixes |
 | Recording prompt | `assets/recording-prompt.wav` | Before every recording |
