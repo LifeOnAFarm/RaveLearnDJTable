@@ -114,8 +114,8 @@ sudo sh deploy/install.sh
 sudo reboot
 ```
 
-Your settings, sounds, songs and recordings are not part of the repository, so an update
-keeps them. Back up `config.json`, `assets/` and `data/` now and then anyway.
+An update never touches your settings, sounds, songs or recordings, even when the
+repository's own sounds change. Back up `config.json`, `assets/` and `data/` now and then anyway.
 
 ## Troubleshooting
 
