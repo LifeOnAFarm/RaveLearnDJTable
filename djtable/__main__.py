@@ -118,6 +118,12 @@ class Controls:
         self.next_web_check = 0
         self.web_requests = {}
         self.overrides = {}
+        # Web overrides are for testing: one saved before this start is not reapplied,
+        # so the physical switches are in charge after every restart.
+        if web_controls:
+            for name, request in web_controls.read().items():
+                if isinstance(request, dict) and isinstance(request.get('request'), str):
+                    self.web_requests[name] = request['request']
 
     def poll(self, now, engine):
         previous = (self.tone, self.level)
