@@ -40,12 +40,11 @@ sudo sh deploy/install.sh
 sudo reboot
 ```
 
-The installer takes about 5–10 minutes on a new card, mostly downloading packages. It:
+The installer takes a few minutes, mostly downloading packages. It:
 
 1. installs the packages it needs, without upgrading anything else;
 2. sets up Python and the table's settings (`config.json`);
-3. copies the included words, announcements, prompt and scratches into place, then makes
-   the instruments, remix beats and Music Maker drums on the Pi (about 2 minutes);
+3. copies the table's sounds into place;
 4. installs the table's services and starts them on every boot;
 5. sets up the speaker and microphone, turns I2C on for the platter, and turns SPI and
    the serial console off, because their pins are used by the buttons and sliders;

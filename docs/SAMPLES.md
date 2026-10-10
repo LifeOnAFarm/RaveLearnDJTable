@@ -2,8 +2,7 @@
 
 Every sound on the table can be swapped for your own. Songs are uploaded on the web page;
 everything else is a file in `/opt/PiDJTable/assets/` on the Pi. The installer fills that
-folder from the repository's `sounds/` folder and generates the rest, and it never replaces
-a file you have changed.
+folder from the repository's `sounds/` folder and never replaces a file you have changed.
 
 | Sound | Where | Used in |
 | --- | --- | --- |

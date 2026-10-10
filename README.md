@@ -56,15 +56,16 @@ Open `http://<your-table>:8080` from a phone or computer on the same network.
 
 ## Sounds
 
-Everything the table needs is included or generated on install, except the random
-songs, which you upload yourself. There are **no commercial songs, licensed samples or
-personal recordings**.
+Every sound the table needs is in `sounds/`, except the random songs, which you upload
+yourself. There are **no commercial songs, licensed samples or personal recordings**.
 
-- **Included** (`sounds/`): the English and Irish colour and shape words, the spoken
-  announcements, the recording prompt and the platter scratches.
-- **Made on the Pi by the installer** (about 2 minutes, not stored in the repo): the
-  keyboard instruments for every theme (House has chords, stabs and a
-  deep bass in F minor), the remix beats and the Music Maker drum kits.
+- The keyboard instruments for every theme (House has chords, stabs and a deep bass in
+  F minor) and the remix beats: original, synthesised in code.
+- The English and Irish colour and shape words, the spoken announcements and the
+  recording prompt.
+- The platter scratches.
+
+The Music Maker drum kits are built by the app itself when it starts.
 
 Make the table your own with [Replacing sounds](docs/SAMPLES.md).
 
@@ -73,8 +74,8 @@ Make the table your own with [Replacing sounds](docs/SAMPLES.md).
 ```text
 djtable/        the app: audio engine, buttons, platter, web pages
 deploy/         install scripts, services, sound overlay
-tools/          starter sound generator, song volume matcher
-sounds/         included words, announcements, prompt and scratches
+tools/          song volume matcher
+sounds/         all of the table's sounds
 docs/           install and sound guides
 hardware/       PCB Gerbers, schematic, KiCad project, parts list and 3D prints
 config.example.json   the table's settings (copied to config.json on install)

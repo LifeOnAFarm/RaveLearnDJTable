@@ -22,3 +22,4 @@ normalization-report-*.json
 # Original sounds shipped with the repository
 !sounds/**/*.wav
 !hardware/*.zip
+!sounds/**/*.npz
