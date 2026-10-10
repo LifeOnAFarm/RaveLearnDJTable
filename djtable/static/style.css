@@ -60,6 +60,13 @@ progress{width:100%;margin-top:10px;accent-color:#426444}
 .seg button{flex:1;min-width:0;padding:9px 4px;font-size:13px}
 .seg button.active{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
 .hw-value{font-size:14px}
+.pins{border-top:1px solid var(--line);padding-top:10px}
+.pins summary{cursor:pointer;font-size:13px;font-weight:650;padding:4px 0}
+.pins table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.pins th{text-align:left;font-size:11px;font-weight:600;color:var(--muted);padding:6px 4px}
+.pins td{padding:5px 4px;border-top:1px solid var(--line)}
+.pins tr.on td{background:var(--soft);color:var(--brand);font-weight:650}
+.pins tr.recent td:last-child{color:var(--brand)}
 .stale .seg,.stale .hw-value{opacity:.45}
 
 /* Admin: songs */

@@ -57,6 +57,12 @@ def read_config(path):
     return config
 
 
+# BCM GPIO number -> Raspberry Pi 40-pin header position.
+HEADER_PIN = {0: 27, 2: 3, 3: 5, 4: 7, 5: 29, 6: 31, 7: 26, 8: 24, 9: 21, 10: 19, 11: 23, 12: 32, 13: 33,
+              14: 8, 15: 10, 16: 36, 17: 11, 18: 12, 19: 35, 20: 38, 21: 40, 22: 15, 23: 16, 24: 18,
+              25: 22, 26: 37, 27: 13}
+
+
 class _Input:
     """One pull-up input read straight through lgpio; a switch to ground is 'pressed'."""
     __slots__ = ('lgpio', 'chip', 'pin')
@@ -92,6 +98,8 @@ class Controls:
         mapping.update({f'{name}_{position}': pin for name, pins in SLIDER_PINS.items()
                         for position, pin in enumerate(pins, 1)})
         self.buttons = open_inputs(stack, mapping)
+        self.pins = mapping
+        self.grounded_at = {}  # Input name -> last time it read grounded, for the Admin pin table.
         seconds = debounce_ms / 1000
         self.debounce = {name: Debouncer(False, seconds) for name in (*COLOURS, 'song', 'record')}
         self.sliders = {name: Debouncer((False, False, False), seconds) for name in SLIDER_PINS}
@@ -122,7 +130,7 @@ class Controls:
                     self.overrides[name] = position
             self.next_web_check = now + .1
         for name in SLIDER_PINS:
-            raw = tuple(self.buttons[f'{name}_{position}'].is_pressed for position in (1, 2, 3))
+            raw = tuple(self._read(f'{name}_{position}', now) for position in (1, 2, 3))
             moved = self.sliders[name].update(raw, now)
             if moved and sum(self.sliders[name].value) == 1:
                 self.overrides.pop(name, None)
@@ -135,7 +143,7 @@ class Controls:
         if self.volume != self.sent_volume and engine.submit('volume', self.volume):
             self.sent_volume = self.volume
         # Mode button: tap = next theme (on release); hold 5 s = next keyboard mode (fires while held).
-        if self.mode_button.update(self.buttons['mode'].is_pressed, now):
+        if self.mode_button.update(self._read('mode', now), now):
             if self.mode_button.value:
                 self.mode_down_at, self.mode_held = now, False
                 self.last_button = ('mode', now)
@@ -147,7 +155,7 @@ class Controls:
             self.mode_held = True
             self.activity_presses += 1
         for name, debounce in self.debounce.items():
-            if debounce.update(self.buttons[name].is_pressed, now):
+            if debounce.update(self._read(name, now), now):
                 if debounce.value:
                     self.last_button = (name, now)
                 if name in COLOURS:
@@ -172,13 +180,28 @@ class Controls:
                        'valid': sum(self.sliders[name].value) == 1}
                 for name, pins in SLIDER_PINS.items()}
 
+    def _read(self, name, now):
+        grounded = self.buttons[name].is_pressed
+        if grounded:
+            self.grounded_at[name] = now
+        return grounded
+
+    def pin_status(self, now):
+        """Every input as [name, BCM, header pin, grounded now, seconds since last grounded]."""
+        rows = []
+        for name, pin in self.pins.items():
+            seen = self.grounded_at.get(name)
+            rows.append([name, pin, HEADER_PIN.get(pin), bool(self.buttons[name].is_pressed),
+                         None if seen is None else round(now - seen, 1)])
+        return rows
+
     def button_status(self, now):
         held = [name for name, debounce in self.debounce.items() if debounce.value]
         if self.mode_button.value:
             held.append('mode')
         last = None if self.last_button is None else {
             'name': self.last_button[0], 'seconds_ago': round(now - self.last_button[1], 1)}
-        return {'held': held, 'last': last}
+        return {'held': held, 'last': last, 'pins': self.pin_status(now)}
 
 
 def console_reader(events):

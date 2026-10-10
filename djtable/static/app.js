@@ -72,7 +72,9 @@ function renderSliders(data) {
     const row = document.createElement('div'); row.className = 'hw-row';
     const title = document.createElement('span'); title.textContent = name[0].toUpperCase() + name.slice(1);
     const note = document.createElement('small');
-    note.textContent = !state ? '' : state.source === 'web' ? 'set here' : state.valid ? 'slider' : 'no contact';
+    const contacts = state?.grounded || [];
+    note.textContent = !state ? '' : state.source === 'web' ? 'set here' : state.valid ? 'slider'
+      : contacts.length ? `contacts ${contacts.join(' + ')}` : 'no contact';
     if (name === 'volume' && data.online) note.textContent += ` · ${Math.round(data.master_volume * 100)}%`;
     title.append(note);
     const seg = document.createElement('div'); seg.className = 'seg';
@@ -91,6 +93,7 @@ function renderStatus(data) {
   const buttons = data.buttons;
   $('buttons').textContent = !data.online || !buttons ? '–' : buttons.held.length ? 'Holding ' + buttons.held.map(buttonName).join(', ')
     : buttons.last ? `Last: ${buttonName(buttons.last.name)} · ${Math.round(buttons.last.seconds_ago)} s ago` : 'Press any button';
+  renderPins(data);
   const p = data.platter, k = data.keyboard || {};
   $('platter').textContent = !data.online ? '–' : !p ? 'Not enabled' : p.error ? p.error :
     `${Math.round(p.angle * 360 / 4096)}° · bend ${k.bend_semitones ?? 0} · speed ${k.playback_speed ?? 1}×${p.magnet === false ? ' · no magnet' : ''}`;
@@ -98,6 +101,22 @@ function renderStatus(data) {
   const states = {idle: 'Ready', prompt: 'Prompt playing', recording: 'Recording…', saving: 'Processing…', playing: 'Playing remix'};
   $('recorder').textContent = !data.online || !rec ? '–' : !rec.capture_enabled ? 'Not enabled'
     : `${states[rec.state] || rec.state}${rec.error ? ' · ' + rec.error : ''}`;
+}
+function pinLabel(name) {
+  const [control, position] = name.split('_');
+  return buttonName(control) + (position ? ' ' + position : '');
+}
+function renderPins(data) {
+  const rows = data.online && data.buttons?.pins || [];
+  $('pins').replaceChildren(...rows.map(([name, gpio, header, grounded, since]) => {
+    const row = document.createElement('tr');
+    const state = grounded ? 'Grounded' : since !== null && since < 30 ? `Grounded ${Math.round(since)} s ago` : 'Open';
+    row.className = grounded ? 'on' : since !== null && since < 30 ? 'recent' : '';
+    for (const text of [pinLabel(name), gpio, header ?? '–', state]) {
+      const cell = document.createElement('td'); cell.textContent = text; row.append(cell);
+    }
+    return row;
+  }));
 }
 async function pollStatus() {
   if (document.hidden && $('sliders').childElementCount) { setTimeout(pollStatus, 2000); return; }
