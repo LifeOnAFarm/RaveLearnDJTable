@@ -10,7 +10,7 @@ everything else is a file in `/opt/PiDJTable/assets/` on the Pi.
 | Remix beats | `assets/backing_beats/` (Teenage Disco), `assets/house_beats/`, `assets/punk_beats/`, `assets/baby_raver_beats/` | Learning voice remixes |
 | Recording prompt | `assets/recording-prompt.wav` | Before every recording |
 | Announcements | `assets/announcements/` (add your own) | Theme, mode and Level changes |
-| Scratches | `assets/scratch/` (add your own) | Platter spun in Learning with nothing playing |
+| Scratches | `assets/scratch/` (three included) | Platter spun in Learning with nothing playing |
 | Music Maker drums | `assets/drums/music_maker/` | Music Maker, Level 2 |
 
 The eight colours, used in every file name, are `pink`, `red`, `orange`, `green`,
@@ -96,9 +96,11 @@ empty, and copy in only the new beats.
 
 ## Announcements and scratches
 
-The starter sounds don't include these; record or find your own. A missing file is simply
-silent. Scratches: put any number of short WAVs (about 1–2 seconds) in `assets/scratch/`;
-each platter spin plays a random one. Announcements use these file names:
+Three scratches come with the table. Add more, or replace them, with any short WAVs
+(about 1–2 seconds) in `assets/scratch/`; each platter spin plays a random one.
+
+Announcements aren't included; record or generate your own. A missing file is simply
+silent. They use these file names:
 
 | File | Plays when |
 | --- | --- |

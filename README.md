@@ -55,8 +55,10 @@ Open `http://<your-table>:8080` from a phone or computer on the same network.
 ## Sounds
 
 The repository contains **no commercial songs, licensed samples or personal recordings**.
-The installer generates original starter instruments, beats and drums, and English/Irish
-words with eSpeak NG. Make the table your own with [Replacing sounds](docs/SAMPLES.md).
+The installer generates original instruments for every theme (including House chords,
+stabs and deep bass in F minor), beats and drums, and English/Irish words with eSpeak NG.
+The platter scratches in `sounds/` are original recordings. Make the table your own with
+[Replacing sounds](docs/SAMPLES.md).
 
 ## Folder layout
 
@@ -64,6 +66,7 @@ words with eSpeak NG. Make the table your own with [Replacing sounds](docs/SAMPL
 djtable/        the app: audio engine, buttons, platter, web pages
 deploy/         install scripts, services, sound overlay
 tools/          starter sound generator, song volume matcher
+sounds/         original platter scratches
 docs/           install and sound guides
 config.example.json   the table's settings (copied to config.json on install)
 ```

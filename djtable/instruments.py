@@ -55,7 +55,7 @@ def frame_positions(count):
 
 
 def _build(tone, semitone, rate, mode='teenage_disco'):
-    if mode in ('house', 'punk'):
+    if mode == 'punk':
         semitone -= 12  # Bass register, with harmonics audible on small speakers.
     frequency = 261.625565 * 2 ** (semitone / 12)
     # Exact integer periods make the sustain boundary phase-continuous.
@@ -67,35 +67,7 @@ def _build(tone, semitone, rate, mode='teenage_disco'):
     end = attack + loop
     t = np.arange(end + release) / rate
     phase = 2 * np.pi * frequency * t
-    if mode == 'house':
-        # Original, band-limited harmonic patches. Expensive synthesis happens
-        # only in the loader; sustained playback uses the same lightweight loops.
-        data = np.zeros(len(t))
-        if tone == 'piano':
-            # A thick octave-down Reese with moving harmonic notches.
-            fundamental = phase * .5
-            for h in range(1, min(30, int(rate*.38/(frequency*.5))) + 1):
-                motion = .40*np.sin(2*np.pi*1.7*t)
-                data += (np.sin(h*fundamental + motion*h*.16)
-                         + np.sin(h*fundamental - motion*h*.19 + .25)) / (2*h**1.2)
-            data += 1.1*np.sin(fundamental) + .25*np.sin(phase)
-        elif tone == 'high':
-            # Metallic FM-style growl: moving sideband strengths, bounded
-            # below Nyquist by additive synthesis rather than raw distortion.
-            for h in range(1, min(24, int(rate*.38/frequency)) + 1):
-                formant = 3.0 + 2.0*np.sin(2*np.pi*2.4*t)
-                weight = (.6/h + 1.2*np.exp(-.5*((h-formant)/1.6)**2))
-                data += weight*np.sin(h*phase + .15*h)
-            data *= .78 + .22*np.sin(2*np.pi*4.8*t)
-            data += .9*np.sin(phase)
-        else:
-            # Bright fifth/octave rave stab; repeated held notes stay pitched.
-            for ratio, gain in ((1, 1.0), (1.5, .45), (2, .3)):
-                for h in range(1, min(16, int(rate*.38/(frequency*ratio))) + 1):
-                    data += gain*np.sin(h*phase*ratio) / h**1.35
-            data *= .5 + .5*np.exp(-t*12)
-            data += .7*np.sin(phase)
-    elif mode == 'punk':
+    if mode == 'punk':
         # Plucked-string harmonic decay and a quieter sustain bed. All partials
         # stay below Nyquist; crunch comes from harmonic weights, not clipping.
         data = np.zeros(len(t))
@@ -186,6 +158,8 @@ def build_pack(rate, mode='teenage_disco', prepared=True):
                     held[tone, colour] = Patch(data, int(start), int(end), rate)
                     short[tone, colour] = note
         return held, short
+    if mode == 'house':
+        return _house_pack(rate)
     held, short = {}, {}
     for tone in TONES:
         for index, colour in enumerate(COLOURS):
@@ -198,6 +172,98 @@ def build_pack(rate, mode='teenage_disco', prepared=True):
             voice.release()
             voice.mix(result[split:])
             short[tone, colour] = result
+    return held, short
+
+
+
+# House: original synthesised sounds in F minor (no samples), laid out like a sample
+# keyboard. Tone 1 plays a different chord on every key and Tone 3 a deep bass, both
+# sustained while held; Tone 2 is a short chord stab that always rings out (one-shot).
+HOUSE_STEPS = (0, 3, 5, 7, 10, 12, 15, 17)  # F minor pentatonic: F Ab Bb C Eb F Ab Bb
+HOUSE_CHORDS = ((0, 3, 7, 10), (3, 7, 10, 14), (5, 8, 12, 15), (7, 10, 14, 17),  # Fm7 Abmaj7 Bbm7 Cm7
+                (8, 12, 15, 19), (10, 14, 17, 20), (12, 15, 19, 22), (15, 19, 22, 26))  # Dbmaj7 Eb7 Fm7 Abmaj7
+HOUSE_LOUDNESS = .228  # Teenage Disco instruments, measured as below.
+
+
+def _house_loudness(x, rate):
+    """RMS above ~150 Hz over the first 0.6 s: roughly what a small speaker plays."""
+    body = x[:round(rate * .6)]
+    hz = np.fft.rfftfreq(len(body), 1 / rate)
+    weight = (hz / 150) ** 4 / (1 + (hz / 150) ** 4)
+    return float(np.sqrt(np.mean(np.fft.irfft(np.fft.rfft(body) * weight, n=len(body)) ** 2)))
+
+
+def _house_organ(freqs, t, rate, decay):
+    """Classic house organ/piano: a bright strike over a drawbar-like sustain."""
+    data = np.zeros(len(t))
+    for index, f in enumerate(freqs):
+        phase = 2 * np.pi * f * t * (1 + .0007 * (index - 1.5))  # Slight spread across the voices.
+        for h, gain in ((1, 1.0), (2, .55), (3, .3), (4, .22), (6, .12), (8, .08)):
+            if h * f < rate * .4:
+                data += gain * np.sin(h * phase) * (.55 + .45 * np.exp(-t * decay * h ** .5))
+    return data / len(freqs)
+
+
+def _house_sustain(data, rate, start, size):
+    """Loop data[start:start+size] seamlessly at a steady level; returns (data, start, end)."""
+    window = max(1, round(rate * .02))
+    env = np.sqrt(np.convolve(data * data, np.ones(window) / window, 'same'))
+    end, cross = start + size, int(size * .4)
+    gain = np.clip(env[start] / np.maximum(env, 1e-5), 1, 4)
+    gain = np.convolve(gain, np.ones(480) / 480, 'same')
+    data = data.copy()
+    data[start - cross:end] *= gain[start - cross:end]
+    data[end:] *= gain[end]  # The release continues from the held level.
+    ramp = np.linspace(0, 1, cross)
+    data[end - cross:end] = data[end - cross:end] * (1 - ramp) + data[start - cross:start] * ramp
+    return data, start, end
+
+
+@lru_cache(maxsize=2)
+def _house_pack(rate):
+    from .core import COLOURS
+    f = 174.614  # F3
+    held, short = {}, {}
+    for index, colour in enumerate(COLOURS):
+        step = HOUSE_STEPS[index]
+        sounds = {}
+        # Tone 1, House chords: 2.5 s, held at the level just after the strike.
+        t = np.arange(round(rate * 2.5)) / rate
+        chord = _house_organ([f * 2 ** (n / 12) for n in HOUSE_CHORDS[index]], t, rate, 6)
+        chord *= np.exp(-t * .5)
+        sounds['piano'] = _house_sustain(chord, rate, round(rate * .14), round(rate * .3))
+        # Tone 2, Chord stabs: a minor-seventh stab, short and punchy, never looped.
+        t = np.arange(round(rate * .55)) / rate
+        stab = _house_organ([f * 2 ** ((step + n) / 12) for n in (0, 3, 7, 10)], t, rate, 14)
+        stab *= np.exp(-t * 7) * (1 - np.exp(-t * 900))
+        sounds['high'] = (stab, len(stab), len(stab))
+        # Tone 3, Deep bass from F2: sine body with a little upper harmonic so small
+        # speakers can hear it; the loop is a whole number of wave cycles.
+        bass_f = f / 2 * 2 ** (step / 12)
+        t = np.arange(round(rate * .95)) / rate
+        phase = 2 * np.pi * bass_f * t
+        bass = (np.sin(phase) + .45 * np.sin(2 * phase) * (.6 + .4 * np.exp(-t * 9))
+                + .2 * np.sin(3 * phase) * np.exp(-t * 6) + .1 * np.sin(4 * phase) * np.exp(-t * 12))
+        bass *= (.7 + .3 * np.exp(-t * 5)) * np.exp(-t * 1.2)
+        period = rate / bass_f
+        sounds['synth'] = _house_sustain(bass, rate, round(rate * .1), int(round(max(1, round(rate * .12 / period)) * period)))
+        for tone, (data, start, end) in sounds.items():
+            attack = round(rate * .003)
+            data[:attack] *= np.linspace(0, 1, attack)
+            tail = round(rate * .03)
+            data[-tail:] *= np.linspace(1, 0, tail) ** 2
+            target = HOUSE_LOUDNESS * (10 ** (2 / 20) if tone == 'synth' else 1)  # Bass +2 dB.
+            for _ in range(3):  # Match loudness; a soft limiter rounds off the strike peaks.
+                data = data * (target / max(_house_loudness(data, rate), 1e-6))
+                data = .85 * np.tanh(data / .85)
+            data = data.astype(np.float32)
+            held[tone, colour] = Patch(data, start, end, rate)
+            note = np.zeros(round(rate * .65), np.float32)  # Levels 1/2: the note before the word.
+            head = data[:len(note)].copy()
+            fade = min(len(head), round(rate * .06))
+            head[-fade:] *= np.linspace(1, 0, fade)
+            note[:len(head)] = head
+            short[tone, colour] = note
     return held, short
 
 

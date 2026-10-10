@@ -21,6 +21,10 @@ test -x .venv/bin/python || python3 -m venv --system-site-packages .venv
 echo '== 3/6 Settings and starter sounds (a few minutes the first time)'
 test -f config.json || cp config.example.json config.json
 .venv/bin/python tools/bootstrap_assets.py
+mkdir -p assets/scratch
+for sound in sounds/scratch/*.wav; do  # Original platter scratches; never replaces your own.
+    test -e "assets/scratch/${sound##*/}" || cp "$sound" assets/scratch/
+done
 
 echo '== 4/6 Services'
 sh deploy/install-services.sh
