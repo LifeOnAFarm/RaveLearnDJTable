@@ -297,7 +297,7 @@ def run(config, console):
         controls = None if console else Controls(stack, config['debounce_ms'], WebControls(config['library_dir'].parent))
         platter = None
         next_platter = 0
-        if config.get('platter_enabled', False):
+        if config.get('platter_enabled', True):
             from .platter import Platter
             platter = stack.enter_context(Platter(config.get('platter_bus', 1), config.get('platter_direction', 1)))
         options = dict(samplerate=config['sample_rate'], blocksize=config['block_size'],

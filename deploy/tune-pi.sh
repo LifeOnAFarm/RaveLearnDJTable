@@ -2,7 +2,8 @@
 # Optional appliance tuning for a dedicated Pi Zero 2 W DJTable (415 MB usable RAM).
 # Frees memory so large Learning themes load without audio underruns.
 # Run as root. Backs up first; changes boot settings, so reboot afterwards.
-# Does not install, upgrade or remove packages, and never touches networking.
+# Does not install, upgrade or remove packages. Networking: removes the unused Ethernet
+# profile and moves Imager's Wi-Fi profile to NetworkManager's own format.
 set -eu
 test "$(id -u)" = 0 || { echo 'Run with sudo'; exit 1; }
 backup=/var/backups/djtable-tune-$(date +%Y%m%d-%H%M%S)
@@ -64,6 +65,9 @@ grep -qx 'disable_splash=1' /boot/firmware/config.txt \
 if [ ! -e /sys/class/net/eth0 ] && nmcli -t -f NAME connection show 2>/dev/null | grep -qx netplan-eth0; then
     nmcli connection delete netplan-eth0 >/dev/null && echo 'removed unused netplan-eth0 profile'
 fi
+
+# Imager's Wi-Fi is a netplan profile, which also reruns netplan at every boot.
+sh "$(dirname "$0")/native-wifi.sh"
 
 echo 'Done. Reboot now: sudo reboot'
 echo "Undo: restore $backup/config.txt, re-enable units listed in $backup/enabled-units.txt,"
