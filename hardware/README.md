@@ -19,8 +19,7 @@ This is the board revision that was built and works, with these fixes made by ha
    it loads a new theme. Without it, theme changes crackle.
 2. **Wire the amp's GAIN pin to ground.** This sets the amp to 12 dB, louder than the
    9 dB it gives with GAIN left unconnected.
-3. **The Raspberry Pi mounts upside-down**, with its chips facing the carrier board.
-   Check the 40-pin socket height leaves room for the parts underneath.
+3. **The Raspberry Pi mounts upside-down**, with its chips facing the carrier board. Oops
 4. **The toy's original switches don't fit this board**, although that was the plan.
    Use these instead. Both fit the board and work with the toy:
    - **SS-23D03-G4** three-position slide switches for Level and Volume (SW4, SW5);
@@ -33,8 +32,8 @@ This is the board revision that was built and works, with these fixes made by ha
 | Qty | Ref | Part | Notes |
 | ---: | --- | --- | --- |
 | 1 | U1 | Raspberry Pi Zero 2 W | With a 2×20 male header |
-| 1 | U1 | 2×20 female socket, 2.54 mm | Height to suit the upside-down Pi |
-| 1 | U2 | INMP441 microphone module, round | Two rows of 3 pins |
+| 1 | U1 | 2×20 female socket, 2.54 mm | |
+| 1 | U2 | INMP441 microphone module | |
 | 1 | U3 | MAX98357A amplifier module (Adafruit-style) | Plus the SD and GAIN wires above |
 | 3 | SW1–SW3 | PS-12F03-G4 push switch | Tone |
 | 2 | SW4–SW5 | SS-23D03-G4 slide switch, 3-position | Level and Volume |
@@ -42,16 +41,16 @@ This is the board revision that was built and works, with these fixes made by ha
 | 1 | R1 | 330 Ω, 1206 | Song button LED |
 | 1 | R2 | 0 Ω, 1206, or a wire | **Bridge it**: connects the Mode button |
 | 2 | R6–R7 | 33 Ω, 1206 | I2S clock lines |
-| 2 | C2, C4 | 100 nF ceramic, 1206, 16 V+ | C3 pads can stay empty |
-| 1 | C1 | 220 µF 10 V electrolytic | 8 mm, 3.5 mm leads |
-| 1 | C5 | 47 µF 10 V electrolytic | 5 mm, 2 mm leads, by the amp |
+| 2 | C2, C3, C4 | 100 nF ceramic, 1206, 16 V+ | |
+| 1 | C1 | 220 µF 10 V electrolytic | |
+| 1 | C5 | 47 µF 10 V electrolytic | |
 | 1 | F1 | Resettable fuse, 2 A hold, 6 V+, 1812 | |
 | — | J1–J6 | 2.54 mm pin headers, or solder the wires in | See connectors below |
 
 Off the board:
-- the toy's keyboard, Song button with its LED, and speaker;
 - an AS5600 magnetic angle module with a diametric magnet, for the platter;
-- a regulated 5 V supply, 2.5 A or more.
+- USB C connector.
+- 3D printed parts.
 
 Power the table only through J3, never through the Pi's USB port at the same time.
 
