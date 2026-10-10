@@ -23,7 +23,8 @@ This is the board revision that was built and works, with these fixes made by ha
 4. **The toy's original switches don't fit this board**, although that was the plan.
    Use these instead. Both fit the board and work with the toy:
    - **SS-23D03-G4** three-position slide switches for Level and Volume (SW4, SW5);
-   - **PS-12F03-G4** push switches for the three Tone buttons (SW1–SW3).
+   - **PS-12F03-G5** push switches for the three Tone buttons (SW1–SW3). The G4 also
+     works, but its shorter plunger needs the board lined up exactly before screwing it in.
 5. **Bridge R2** with a 0 Ω resistor or a wire. It connects the Mode button; it was left
    as an option on this board and isn't needed as a resistor.
 
@@ -35,7 +36,7 @@ This is the board revision that was built and works, with these fixes made by ha
 | 1 | U1 | 2×20 female socket, 2.54 mm | |
 | 1 | U2 | INMP441 microphone module | |
 | 1 | U3 | MAX98357A amplifier module (Adafruit-style) | Plus the SD and GAIN wires above |
-| 3 | SW1–SW3 | PS-12F03-G4 push switch | Tone |
+| 3 | SW1–SW3 | PS-12F03-G5 push switch | Tone |
 | 2 | SW4–SW5 | SS-23D03-G4 slide switch, 3-position | Level and Volume |
 | 2 | SW6–SW7 | 6×6 mm tactile switch, through-hole | Record and Mode |
 | 1 | R1 | 330 Ω, 1206 | Song button LED |
