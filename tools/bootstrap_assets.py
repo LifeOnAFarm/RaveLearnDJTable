@@ -57,14 +57,21 @@ def main():
         # The admin page previews these files; they are not instrument inputs.
         preview_root = instruments if mode == 'teenage_disco' else instruments / mode
         for tone in ('piano', 'high', 'synth'):
+            if (preview_root / f'{tone}.wav').exists():
+                continue
             pieces = []
             for colour in COLOURS:
-                voice = InstrumentVoice(held[tone, colour])
+                patch = held[tone, colour]
                 note = np.zeros(round(RATE * .5), dtype=np.float32)
-                split = round(RATE * .3)
-                voice.mix(note[:split])
-                voice.release()
-                voice.mix(note[split:])
+                if patch.loop_start >= patch.loop_end:  # One-shot sample: no sustain loop.
+                    clip = patch.data[:len(note)]
+                    note[:len(clip)] = clip
+                else:
+                    voice = InstrumentVoice(patch)
+                    split = round(RATE * .3)
+                    voice.mix(note[:split])
+                    voice.release()
+                    voice.mix(note[split:])
                 pieces.extend((note, np.zeros(round(RATE * .08), dtype=np.float32)))
             write(preview_root / f'{tone}.wav', np.concatenate(pieces))
         print('Prepared', mode, flush=True)
