@@ -25,13 +25,8 @@ This is the board revision that was built and works, with these fixes made by ha
    Use these instead. Both fit the board and work with the toy:
    - **SS-23D03-G4** three-position slide switches for Level and Volume (SW4, SW5);
    - **PS-12F03-G4** push switches for the three Tone buttons (SW1–SW3).
-     Their flat legs are a tight fit in this board's holes; trim them slightly if needed.
-
-Before the first power-up, check with a meter:
-
-- 5 V and ground on the Pi socket aren't shorted, and match the Pi;
-- **Pi pins 38 and 40 aren't bridged.** They are the microphone and speaker data, side by
-  side. A bridge feeds the microphone into the speaker: constant hum or howl.
+5. **Bridge R2** with a 0 Ω resistor or a wire. It connects the Mode button; it was left
+   as an option on this board and isn't needed as a resistor.
 
 ## Parts
 
@@ -45,7 +40,7 @@ Before the first power-up, check with a meter:
 | 2 | SW4–SW5 | SS-23D03-G4 slide switch, 3-position | Level and Volume |
 | 2 | SW6–SW7 | 6×6 mm tactile switch, through-hole | Record and Mode |
 | 1 | R1 | 330 Ω, 1206 | Song button LED |
-| 1 | R2 | 1 kΩ, 1206 | **Fit it**: connects the Mode button |
+| 1 | R2 | 0 Ω, 1206, or a wire | **Bridge it**: connects the Mode button |
 | 2 | R6–R7 | 33 Ω, 1206 | I2S clock lines |
 | 2 | C2, C4 | 100 nF ceramic, 1206, 16 V+ | C3 pads can stay empty |
 | 1 | C1 | 220 µF 10 V electrolytic | 8 mm, 3.5 mm leads |

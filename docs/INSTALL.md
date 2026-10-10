@@ -123,8 +123,6 @@ keeps them. Back up `config.json`, `assets/` and `data/` now and then anyway.
   `Audio running` and `Mode/library ready` mean it started properly.
 - **No sound:** `aplay -l` must list `snd_rpi_googlevoicehat_soundcar`. If not, run
   `sudo sh deploy/install-duplex.sh` from `/opt/PiDJTable` and reboot.
-- **Constant hum or howl:** microphone data is reaching the amp. Check the wiring of
-  the I2S data pins (pins 38 and 40).
 - **Volume slider wrong or stuck:** `grep serial0 /boot/firmware/cmdline.txt` must print
   nothing. If it does, rerun `sudo sh deploy/install-duplex.sh` and reboot.
 - **Crackle when changing theme:** check that the amp's SD pin is wired to BCM4, and do
