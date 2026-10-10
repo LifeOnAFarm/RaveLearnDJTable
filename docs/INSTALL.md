@@ -33,7 +33,7 @@ Then on the Pi:
 ```sh
 sudo apt update
 sudo apt install -y --no-upgrade git
-sudo git clone https://github.com/LifeOnAFarm/RaveLearnDJTable /opt/PiDJTable
+sudo git clone https://github.com/LifeOnAFarm/RaveRepeatDJTable /opt/PiDJTable
 cd /opt/PiDJTable
 sudo sh deploy/install.sh
 sudo reboot
