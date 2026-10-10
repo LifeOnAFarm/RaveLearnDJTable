@@ -1,7 +1,9 @@
 # Replacing sounds
 
 Every sound on the table can be swapped for your own. Songs are uploaded on the web page;
-everything else is a file in `/opt/PiDJTable/assets/` on the Pi.
+everything else is a file in `/opt/PiDJTable/assets/` on the Pi. The installer fills that
+folder from the repository's `sounds/` folder and generates the rest, and it never replaces
+a file you have changed.
 
 | Sound | Where | Used in |
 | --- | --- | --- |
@@ -9,7 +11,7 @@ everything else is a file in `/opt/PiDJTable/assets/` on the Pi.
 | Colour and shape words | `assets/samples/colours/<en or ga>/<colour>.wav` and `assets/samples/symbols/<en or ga>/<colour>.wav` | Learning, Levels 1 and 2 |
 | Remix beats | `assets/backing_beats/` (Teenage Disco), `assets/house_beats/`, `assets/punk_beats/`, `assets/baby_raver_beats/` | Learning voice remixes |
 | Recording prompt | `assets/recording-prompt.wav` | Before every recording |
-| Announcements | `assets/announcements/` (add your own) | Theme, mode and Level changes |
+| Announcements | `assets/announcements/` | Theme, mode and Level changes |
 | Scratches | `assets/scratch/` (three included) | Platter spun in Learning with nothing playing |
 | Music Maker drums | `assets/drums/music_maker/` | Music Maker, Level 2 |
 
@@ -99,8 +101,8 @@ empty, and copy in only the new beats.
 Three scratches come with the table. Add more, or replace them, with any short WAVs
 (about 1–2 seconds) in `assets/scratch/`; each platter spin plays a random one.
 
-Announcements aren't included; record or generate your own. A missing file is simply
-silent. They use these file names:
+The announcements below are included. Replace any of them with a file of the same name;
+delete one to make that event silent.
 
 | File | Plays when |
 | --- | --- |

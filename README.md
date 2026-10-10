@@ -37,7 +37,7 @@ own voice as an instrument (Level 3).
 | Song | Random song, or stop | Tap: play/pause. Hold 2 s: clear this layer. Hold 5 s: clear all | Tap: play/pause. Hold: next track |
 | Platter | Bends notes and song speed; spun on its own, plays a scratch | Bends notes and loop speed | |
 
-Optional spoken announcements say when the theme, mode or Level changes.
+Spoken announcements say when the theme, mode or Level changes.
 
 In Bluetooth mode the table is visible as **DJTable** for two minutes. Pair with no PIN.
 If no phone connects in time, it goes back to Learning.
@@ -54,11 +54,16 @@ Open `http://<your-table>:8080` from a phone or computer on the same network.
 
 ## Sounds
 
-The repository contains **no commercial songs, licensed samples or personal recordings**.
-The installer generates original instruments for every theme (including House chords,
-stabs and deep bass in F minor), beats and drums, and English/Irish words with eSpeak NG.
-The platter scratches in `sounds/` are original recordings. Make the table your own with
-[Replacing sounds](docs/SAMPLES.md).
+Everything the table needs is included or generated on install, except the random
+songs, which you upload yourself. There are **no commercial songs, licensed samples or
+personal recordings**.
+
+- **Included** (`sounds/`): the English and Irish colour and shape words, the spoken
+  announcements, the recording prompt and the platter scratches.
+- **Generated:** the keyboard instruments for every theme (House has chords, stabs and a
+  deep bass in F minor), the remix beats and the Music Maker drum kits.
+
+Make the table your own with [Replacing sounds](docs/SAMPLES.md).
 
 ## Folder layout
 
@@ -66,7 +71,7 @@ The platter scratches in `sounds/` are original recordings. Make the table your 
 djtable/        the app: audio engine, buttons, platter, web pages
 deploy/         install scripts, services, sound overlay
 tools/          starter sound generator, song volume matcher
-sounds/         original platter scratches
+sounds/         included words, announcements, prompt and scratches
 docs/           install and sound guides
 config.example.json   the table's settings (copied to config.json on install)
 ```

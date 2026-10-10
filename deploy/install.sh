@@ -20,11 +20,12 @@ test -x .venv/bin/python || python3 -m venv --system-site-packages .venv
 
 echo '== 3/6 Settings and starter sounds (a few minutes the first time)'
 test -f config.json || cp config.example.json config.json
-.venv/bin/python tools/bootstrap_assets.py
-mkdir -p assets/scratch
-for sound in sounds/scratch/*.wav; do  # Original platter scratches; never replaces your own.
-    test -e "assets/scratch/${sound##*/}" || cp "$sound" assets/scratch/
+# Included sounds (words, announcements, prompt, scratches) first; never replaces your own.
+(cd sounds && find . -type f -name '*.wav') | while read -r sound; do
+    test -e "assets/$sound" || install -D -m 644 "sounds/$sound" "assets/$sound"
 done
+# Then generate everything else (instruments, beats, drums); existing files are kept.
+.venv/bin/python tools/bootstrap_assets.py
 
 echo '== 4/6 Services'
 sh deploy/install-services.sh

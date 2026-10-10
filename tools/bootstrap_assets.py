@@ -108,7 +108,7 @@ def main():
                 catalogue.write_text(json.dumps(words, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
             prompt = say('Record a message after the beep.', 'en')
             t = np.arange(round(.18 * RATE)) / RATE
-            beep = .4 * np.sin(2 * np.pi * 880 * t) * np.sin(np.pi * np.arange(len(t)) / len(t))**2
+            beep = .4 * np.sin(2 * np.pi * 882 * t) * np.sin(np.pi * np.arange(len(t)) / len(t))**2
             write(ROOT / 'assets/recording-prompt.wav', np.concatenate((prompt, beep)))
     # Six original percussion loops, no extracts from commercial recordings.
     for index, tempo in enumerate((110, 120, 130, 140, 150, 160), 1):
