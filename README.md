@@ -74,7 +74,7 @@ deploy/         install scripts, services, sound overlay
 tools/          starter sound generator, song volume matcher
 sounds/         included words, announcements, prompt and scratches
 docs/           install and sound guides
-hardware/       PCB Gerbers, schematic, KiCad project and parts list
+hardware/       PCB Gerbers, schematic, KiCad project, parts list and 3D prints
 config.example.json   the table's settings (copied to config.json on install)
 ```
 

@@ -41,7 +41,7 @@ This is the board revision that was built and works, with these fixes made by ha
 | 1 | R1 | 330 Ω, 1206 | Song button LED |
 | 1 | R2 | 0 Ω, 1206, or a wire | **Bridge it**: connects the Mode button |
 | 2 | R6–R7 | 33 Ω, 1206 | I2S clock lines |
-| 2 | C2, C3, C4 | 100 nF ceramic, 1206, 16 V+ | |
+| 3 | C2, C3, C4 | 100 nF ceramic, 1206, 16 V+ | |
 | 1 | C1 | 220 µF 10 V electrolytic | |
 | 1 | C5 | 47 µF 10 V electrolytic | |
 | 1 | F1 | Resettable fuse, 2 A hold, 6 V+, 1812 | |
@@ -50,9 +50,20 @@ This is the board revision that was built and works, with these fixes made by ha
 Off the board:
 - an AS5600 magnetic angle module with a diametric magnet, for the platter;
 - USB C connector.
-- 3D printed parts.
+- 3D printed parts (below).
 
 Power the table only through J3, never through the Pi's USB port at the same time.
+
+## 3D printed parts
+
+STL files in [`3d-prints/`](3d-prints/).
+
+| Part | What it does | Needed? |
+| --- | --- | --- |
+| `Platter Mount.STL` | Replaces the toy's platter mount, with a pocket to glue in the AS5600's magnet | Yes |
+| `AS5600 Mount.STL` | Holds the AS5600 under the platter; takes a 5 mm LED too if you want one. Replaces the toy's button and LED board | Yes |
+| `Mode Button.STL` | A working Mode button. On Learn & Play tables without language changing, that button is only a dummy | Only for those tables |
+| `Speaker Holder.STL` | Lets you fit a more powerful speaker in place of the original | Optional |
 
 ## Connectors
 
