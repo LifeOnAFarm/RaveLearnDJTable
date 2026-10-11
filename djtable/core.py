@@ -147,8 +147,9 @@ class Voice:
                 output[cursor:cursor + count] += data[offset:offset + count] * scale
             else:
                 positions = self.offset + np.arange(count) * step
-                index = positions.astype(np.int64)
-                fraction = positions-index
+                # Rounding can land the last position exactly on len(data); hold the last sample.
+                index = np.minimum(positions.astype(np.int64), len(data) - 1)
+                fraction = np.minimum(positions - index, 1.0)
                 output[cursor:cursor + count] += (data[index]*(1-fraction)
                                                 + data[np.minimum(index+1, len(data)-1)]*fraction) * scale
             cursor += count
