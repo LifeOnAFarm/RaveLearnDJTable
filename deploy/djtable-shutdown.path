@@ -1,0 +1,9 @@
+[Unit]
+Description=DJTable shutdown request (Record + Mode held)
+
+[Path]
+# Written by djtable.service, which runs without root rights.
+PathExists=/run/djtable/shutdown
+
+[Install]
+WantedBy=multi-user.target

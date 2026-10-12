@@ -111,6 +111,7 @@ delete one to make that event silent.
 | `level_keyboard_1.wav`, `level_keyboard_2.wav`, `level_keyboard_3.wav` | The Level slider moves in Learning |
 | `bluetooth_connected.wav` | A phone connects |
 | `maker_layer_deleted.wav`, `maker_all_deleted.wav` | Music Maker clears one layer or all of them |
+| `shutting_down.wav` | Mode and Record have been held for 10 seconds; the table then powers off |
 
 ## Music Maker drums
 

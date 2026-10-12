@@ -41,6 +41,10 @@ own voice as an instrument (Level 3).
 
 Spoken announcements say when the theme, mode or Level changes.
 
+**Turning it off:** hold the mode button, then Record as well, and keep both held for
+10 seconds. The table says it's shutting down and powers off safely. Wait for the Pi's
+light to stop flashing before you switch off the power.
+
 In Bluetooth mode the table is visible as **DJTable** for two minutes. Pair with no PIN.
 If no phone connects in time, it goes back to Learning.
 

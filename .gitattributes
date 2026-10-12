@@ -5,3 +5,4 @@
 *.socket text eol=lf
 *.conf text eol=lf
 *.dts text eol=lf
+*.path text eol=lf

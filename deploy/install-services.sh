@@ -22,5 +22,9 @@ chown root:djtable config.json
 chmod 0640 config.json
 install -m 0644 deploy/djtable.service /etc/systemd/system/djtable.service
 install -m 0644 deploy/djtable-web.service /etc/systemd/system/djtable-web.service
+# Record + Mode held for 10 s: the table (no root rights) asks, this root unit powers off.
+install -m 0644 deploy/djtable-shutdown.path /etc/systemd/system/djtable-shutdown.path
+install -m 0644 deploy/djtable-shutdown.service /etc/systemd/system/djtable-shutdown.service
 systemctl daemon-reload
-echo 'Services installed, not started. Follow INSTALL.md for checks and enabling.'
+systemctl enable --now djtable-shutdown.path
+echo 'Services installed.'

@@ -1,0 +1,6 @@
+[Unit]
+Description=Power off after a DJTable shutdown request
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl poweroff

@@ -63,6 +63,9 @@ HEADER_PIN = {0: 27, 2: 3, 3: 5, 4: 7, 5: 29, 6: 31, 7: 26, 8: 24, 9: 21, 10: 19
               25: 22, 26: 37, 27: 13}
 
 
+SHUTDOWN_HOLD = 10  # Seconds of Record + Mode together.
+
+
 class _Input:
     """One pull-up input read straight through lgpio; a switch to ground is 'pressed'."""
     __slots__ = ('lgpio', 'chip', 'pin')
@@ -108,6 +111,11 @@ class Controls:
         self.activity_presses = 0  # 5-second holds: next keyboard mode.
         self.mode_down_at = None
         self.mode_held = False
+        # Record + Mode held together for SHUTDOWN_HOLD seconds asks for a shutdown. While
+        # both are involved, neither does its usual job.
+        self.combo_since = None
+        self.record_ignored = False
+        self.shutdown_requested = False
         self.last_button = None  # (name, monotonic time) for the Admin hardware test.
         self.song_down_at = None
         self.bluetooth_requests = []  # 'play_pause' / 'next' for the phone; main forwards them.
@@ -157,6 +165,14 @@ class Controls:
                 if self.mode_down_at is not None and not self.mode_held:
                     self.mode_presses += 1
                 self.mode_down_at = None
+        if self.mode_button.value and self.debounce['record'].value:
+            self.mode_held = True  # No theme or keyboard-mode change from this press.
+            if self.combo_since is None:
+                self.combo_since = now
+            elif now - self.combo_since >= SHUTDOWN_HOLD and not self.shutdown_requested:
+                self.shutdown_requested = True
+        else:
+            self.combo_since = None
         if self.mode_down_at is not None and not self.mode_held and now - self.mode_down_at >= 5:
             self.mode_held = True
             self.activity_presses += 1
@@ -164,6 +180,12 @@ class Controls:
             if debounce.update(self._read(name, now), now):
                 if debounce.value:
                     self.last_button = (name, now)
+                if name == 'record':
+                    # Record pressed while Mode is held starts the shutdown hold, not a recording.
+                    if debounce.value:
+                        self.record_ignored = self.mode_button.value
+                    if self.record_ignored:
+                        continue
                 if name in COLOURS:
                     engine.submit('key', name, TONES[self.tone - 1], self.level) if debounce.value else engine.submit('key_up', name)
                 elif getattr(engine, 'activity', 'keyboard') == 'maker':
@@ -317,6 +339,7 @@ def run(config, console):
     switch_muted = False
     muted_at = 0
     next_status = 0
+    shutdown_at = None
     next_library_check = 0
     next_activity_check = 0
     last_report = time.monotonic()
@@ -390,6 +413,15 @@ def run(config, console):
                             choice = order[(order.index(modes.selected()) + presses) % len(order)]
                             modes.select(choice)  # Same path as the web page, so the amp mute applies.
                             logging.info('Mode button: selected %s', choice)
+                    if controls.shutdown_requested and shutdown_at is None:
+                        clip = engine.announcements.get('shutting_down')
+                        engine.submit('announce', 'shutting_down')
+                        shutdown_at = time.monotonic() + (len(clip) / config['sample_rate'] if clip is not None else 0) + .5
+                        logging.info('Record + Mode held %d s: shutting down', SHUTDOWN_HOLD)
+                    if shutdown_at is not None and time.monotonic() >= shutdown_at:
+                        # djtable-shutdown.path (root) sees this file and powers the Pi off.
+                        Path('/run/djtable/shutdown').touch()
+                        shutdown_at = float('inf')
                     if controls.activity_presses:
                         controls.activity_presses = 0
                         if engine.record_state in ('idle', 'playing') and future is None:

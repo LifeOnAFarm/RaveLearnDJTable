@@ -132,5 +132,5 @@ repository's own sounds change. Back up `config.json`, `assets/` and `data/` now
 - **Slow start:** a slow SD card costs several seconds. Measure it with
   `sudo dd if=/dev/mmcblk0 of=/dev/null bs=1M count=200 iflag=direct`. About 20 MB/s or
   more is good.
-- **Restart the table:** `sudo systemctl restart djtable`. **Turn it off safely:**
-  `sudo poweroff`.
+- **Restart the table:** `sudo systemctl restart djtable`. **Turn it off safely:** hold the
+  mode button and Record together for 10 seconds, or run `sudo poweroff`.
