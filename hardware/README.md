@@ -22,11 +22,17 @@ This is the board revision that was built and works, with these fixes made by ha
 3. **The Raspberry Pi mounts upside-down**, with its chips facing the carrier board. Oops
 4. **The toy's original switches don't fit this board**, although that was the plan.
    Use these instead. Both fit the board and work with the toy:
-   - **SS-23D03-G4** three-position slide switches for Level and Volume (SW4, SW5);
+   - **SS-23D03-G4** three-position slide switches for Level and Volume (SW4, SW5).
+     They stand about 2 mm taller than the toy's switches, so print the new
+     `Switch Cover.STL` (below), or cut about 2 mm off the toy's own switch covers;
    - **PS-12F03-G5** push switches for the three Tone buttons (SW1–SW3). The G4 also
      works, but its shorter plunger needs the board lined up exactly before screwing it in.
 5. **Bridge R2** with a 0 Ω resistor or a wire. It connects the Mode button; it was left
    as an option on this board and isn't needed as a resistor.
+
+**For a future board revision:** pick a different three-position slide switch for Level and
+Volume, with a body about 5.5 mm tall instead of the SS-23D03-G4's 7.5 mm, so the toy's
+original switch covers fit unchanged. No replacement part has been chosen yet.
 
 ## Parts
 
@@ -37,7 +43,7 @@ This is the board revision that was built and works, with these fixes made by ha
 | 1 | U2 | INMP441 microphone module | |
 | 1 | U3 | MAX98357A amplifier module (Adafruit-style) | Plus the SD and GAIN wires above |
 | 3 | SW1–SW3 | PS-12F03-G5 push switch | Tone |
-| 2 | SW4–SW5 | SS-23D03-G4 slide switch, 3-position | Level and Volume |
+| 2 | SW4–SW5 | SS-23D03-G4 slide switch, 3-position | Level and Volume; needs the printed switch covers |
 | 2 | SW6–SW7 | 6×6 mm tactile switch, through-hole | Record and Mode |
 | 1 | R1 | 330 Ω, 1206 | NumPad LED |
 | 1 | R2 | 0 Ω, 1206, or a wire | **Bridge it**: connects the Mode button |
@@ -64,6 +70,7 @@ STL files in [`3d-prints/`](3d-prints/).
 | `Platter Mount.STL` | Replaces the toy's platter mount, with a pocket to glue in the AS5600's magnet | Yes |
 | `AS5600 Mount.STL` | Holds the AS5600 under the platter; takes a 5 mm LED too if you want one. Replaces the toy's button and LED board | Yes |
 | `Mode Button.STL` | A working Mode button. On Learn & Play tables without language changing, that button is only a dummy | Only for those tables |
+| `Switch Cover.STL` | Covers for the Level and Volume switches, made for the taller SS-23D03-G4 | Yes, unless you cut about 2 mm off the toy's own covers |
 | `Speaker Holder.STL` | Lets you fit a more powerful speaker in place of the original | Optional |
 
 ## Connectors
